@@ -58,7 +58,7 @@ def prepare_tokens(
     output_file: Path,
     num_jobs: int,
     tokenizer: str,
-    lang: str = "en-us",
+    lang: str = "pl",
 ):
     logging.info(f"Processing {input_file}")
     if output_file.is_file():
