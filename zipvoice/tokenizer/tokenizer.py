@@ -127,7 +127,7 @@ class SimpleTokenizer(Tokenizer):
 class EspeakTokenizer(Tokenizer):
     """A simple tokenizer with Espeak g2p function."""
 
-    def __init__(self, token_file: Optional[str] = None, lang: str = "en-us"):
+    def __init__(self, token_file: Optional[str] = None, lang: str = "pl"):
         """
         Args:
           tokens: the file that contains information that maps tokens to ids,
@@ -321,7 +321,7 @@ class EmiliaTokenizer(Tokenizer):
     def tokenize_EN(self, text: str) -> List[str]:
         try:
             text = self.english_normalizer.normalize(text)
-            tokens = phonemize_espeak(text, "en-us")
+            tokens = phonemize_espeak(text, "pl")
             tokens = reduce(lambda x, y: x + y, tokens)
             return tokens
         except Exception as ex:
@@ -581,7 +581,7 @@ class LibriTTSTokenizer(Tokenizer):
             tokens_list = [list(texts[i]) for i in range(len(texts))]
         elif self.type == "phone":
             tokens_list = [
-                phonemize_espeak(texts[i].lower(), "en-us") for i in range(len(texts))
+                phonemize_espeak(texts[i].lower(), "pl") for i in range(len(texts))
             ]
         elif self.type == "bpe":
             tokens_list = self.sp.encode(texts, out_type=str)
